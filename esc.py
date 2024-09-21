@@ -6,7 +6,7 @@ import pygetwindow as gw
 import TransactionScreenOcr
 from analysisGoodsImage import analysis,close
 from datetime import datetime
-
+import getRedis
 pyautogui.FAILSAFE = False
 def find_window_by_title(partial_title):
     for window in gw.getAllWindows():
@@ -55,7 +55,6 @@ def sp(st=0,et=1):
 
 def should_run_task(now):
     minute = now.minute
-    # 检查当前时间是否在 15-20 分或 30-35 分之间
     return (minute==random.randint(15,20)) or (minute==random.randint(30,35))
 def main():  
   if transcation_.activate==False:
@@ -76,7 +75,6 @@ def main():
 window.activate()
 last_run_minute = None
 while True:
-    
     now=datetime.now()
     if should_run_task(now) and last_run_minute != now.minute:
         close(transcation_)
@@ -86,7 +84,8 @@ while True:
         main()
         continue
     else:
-     sp(3,5)
+     sp(1,3)
+     getRedis.getHashHandle()
      main()
     
   

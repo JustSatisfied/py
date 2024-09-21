@@ -46,13 +46,17 @@ def analysis(t):
         pyautogui.click()
     else:
         result=ocr('./GoodsImage.png')
-        goodsValue=[28,90]
+        goodsValue=[66,110]
         t_flag=False
         for index,value in enumerate(goodsValue):
-            if value>=int(result[index]):
+            try:
+                price=int(result[index])
+            except ValueError:
+                continue
+            if value>=price:
                 t_flag=True
                 y1=470+int(index)*70
-                y2=520+int(index)
+                y2=520+int(index)*50
                 random_move(1468,y1,1570,y2)
                 random_sp()
                 pyautogui.click()
@@ -67,7 +71,7 @@ def analysis(t):
                 random_sp()
                 pyautogui.press('backspace')
                 random_sp()
-                pyautogui.typewrite(str(random.randint(2,9)), interval=random.uniform(0.2,0.5))
+                pyautogui.typewrite(str(random.randint(4,9)), interval=random.uniform(0.2,0.5))
                 random_sp()
                 random_move(1207,801,1263,819)
                 random_sp()
@@ -77,7 +81,7 @@ def analysis(t):
                 random_sp()
                 pyautogui.typewrite(str(value), interval=random.uniform(0.2,0.5))
                 random_sp()
-                random_move(1065,1139,1187,1176)
+                random_move(1065,1100,1187,1139)
                 pyautogui.click()
                 random_sp()
                 random_move(1086,800,1179,834)
