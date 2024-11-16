@@ -12,6 +12,9 @@ def ocr(imageUrl="./image.png"):
     # 识别文本，指定语言为中文（chi_sim）和英语（eng）
     text = pytesseract.image_to_string(image, lang='chi_sim+eng')
     list=text.split('\n')
-    
+    print(list)
     return  [item for item in list if item]
- 
+
+
+
+ocr()

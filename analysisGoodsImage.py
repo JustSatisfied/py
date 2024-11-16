@@ -46,7 +46,7 @@ def analysis(t):
         pyautogui.click()
     else:
         result=ocr('./GoodsImage.png')
-        goodsValue=[66,110]
+        goodsValue=[12,18]
         t_flag=False
         for index,value in enumerate(goodsValue):
             try:
@@ -71,7 +71,7 @@ def analysis(t):
                 random_sp()
                 pyautogui.press('backspace')
                 random_sp()
-                pyautogui.typewrite(str(random.randint(4,9)), interval=random.uniform(0.2,0.5))
+                pyautogui.typewrite(str(random.randint(10,15)), interval=random.uniform(0.2,0.5))
                 random_sp()
                 random_move(1207,801,1263,819)
                 random_sp()
@@ -81,10 +81,10 @@ def analysis(t):
                 random_sp()
                 pyautogui.typewrite(str(value), interval=random.uniform(0.2,0.5))
                 random_sp()
-                random_move(1065,1100,1187,1139)
+                random_move(1065,1146,1187,1168)
                 pyautogui.click()
                 random_sp()
-                random_move(1086,800,1179,834)
+                random_move(1100,802,1165,829)
                 pyautogui.click()
         if(t_flag==False):
             t.addCurrentFlush()
