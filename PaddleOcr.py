@@ -17,21 +17,24 @@ def Ocr(img_path):
         res = result[idx]
         for line in res:
             # line 的结构通常是 [((x1, y1), (x2, y2), (x3, y3), (x4, y4)), ('文本内容', 置信度)]
-            bbox=line[0]# 文本框的坐标
-            text=line[1][0] # 识别的文本内容
-            confidence=line[1][1]# 置信度
-            print(f"文本框坐标: {bbox}, 识别文本: {text}, 置信度: {confidence}")
+            bbox.append(line[0])  # 文本框的坐标
+            text.append(line[1][0])  # 识别的文本内容
+            confidence.append(line[1][1])  # 置信度
+           
 
-   
+    print(text)
     # if result and len(result) > 0:
-    #     image = Image.open(img_path).convert('RGB')
+    #     image = Image.open(absolute_path).convert('RGB')
     #     boxes = [line[0] for line in result[0]]
     #     txts = [line[1][0] for line in result[0]]
     #     scores = [line[1][1] for line in result[0]]
     #     im_show = draw_ocr(image, boxes, txts, scores, font_path='./fonts/simfang.ttf')
     #     im_show = Image.fromarray(im_show)
-    #     im_show.save('result2.jpg')
-    
+    #     im_show.save('result.jpg')
+    # else:
+    #     print("未检测到任何文本。")
+     
     return [bbox,text,confidence]
      
-bbox,text,confidence=Ocr("english.jpg")
+ 
+ 

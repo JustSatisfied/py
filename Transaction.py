@@ -9,7 +9,7 @@ target_pos = (1351, 45)  # 终点坐标
 
 def move(start_pos,target_pos,step=random.randint(20,35),relative_pos_list=[]):
         def move_pos(start_pos, target_pos, step=10):
-            p 
+            
             for i in range(0, step):
                 if i <= step / 2:
                     dx = int(random.random() * (target_pos[0] - start_pos[0]) / step)

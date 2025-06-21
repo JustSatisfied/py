@@ -31,10 +31,8 @@ def move(start_pos, end_pos, duration=random.uniform(0,1)):
     
     # 确保鼠标最终位置在 end_pos
     pyautogui.moveTo(end_x, end_y)
-def random_move(x1,y1,x2,y2):
-    x,y=random_x_y(x1,y1,x2,y2)
+def random_move(x,y):
     px,py=pyautogui.position()
-  
     move((px,py),(x,y))
 
 
