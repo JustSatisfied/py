@@ -8,7 +8,12 @@ ocr = PaddleOCR(use_angle_cls=True, lang="ch")
 def Ocr(img_path):
     # 指定图像路径
     # 进行文字识别
-    result = ocr.ocr(img_path, cls=True)
+    current_script_path = os.path.abspath(__file__)
+    current_script_dir = os.path.dirname(current_script_path)
+    dir_path=os.path.join(current_script_dir,img_path)
+  
+    print(f"DEBUG: Ocr function is trying to process image at: {dir_path}")
+    result = ocr.ocr(dir_path, cls=True)
     bbox=[]
     text=[]
     confidence=[]
@@ -21,8 +26,19 @@ def Ocr(img_path):
             text.append(line[1][0])  # 识别的文本内容
             confidence.append(line[1][1])  # 置信度
            
-
-    print(text)
+     
+    textMap={}
+   
+    for index,value in enumerate(text):
+        position=bbox[index]
+        if value in textMap:
+            textMap[value+"副本"]=[position[0][0],position[0][1]]
+        else:
+            position=bbox[index]
+            textMap[value]=[position[0][0],position[0][1]]
+            if index+3<=len(text)-1:
+             textMap[value].append(text[index+3])
+    
     # if result and len(result) > 0:
     #     image = Image.open(absolute_path).convert('RGB')
     #     boxes = [line[0] for line in result[0]]
@@ -34,7 +50,5 @@ def Ocr(img_path):
     # else:
     #     print("未检测到任何文本。")
      
-    return [bbox,text,confidence]
-     
- 
+    return [bbox,text,confidence,textMap]
  

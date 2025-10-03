@@ -4,27 +4,17 @@ from mouseMove import move,random_move
 import random
 import time
 from datetime import datetime
-from pocr import Ocr
+from py.py.Ocr.PaddleOcr import Ocr
 import TransactionScreenOcr
 from work import windowActivate
 
-# cacheSceneName=[
-#  {
-#      screenName:''
-#  }
-# ]
+cacheSceneName=[
+ {
+     screenName:''
+ }
+]
  
-# {
-#     sceneName:''
-#     fuzzyMath:
-#     name:
-#     x:
-#     y:
-#     offsetX:
-#     offsetY:
-#     allowCache:
-#     jump:
-# }
+ 
  
 def sp(st=0,et=1):
     time.sleep(random.uniform(st,et))
@@ -34,13 +24,15 @@ now = datetime.now()
 minutes = now.minute
 
 screen_x=322 
-screen_y=275
+screen_y=250
 screen_x1=1931
-screen_y1=1280
+screen_y1=1249
 
 commodity_price={
-    "裁缝术：衰落[16-19]":200,
-    "冶金术：衰落[16-19]":140,
+    "裁缝术：梦幻[16-19]":11,
+    "衰落":100,
+    "太阳之祝福":125
+   
 }
 
  
@@ -50,7 +42,7 @@ default_commodity_price=1050
 
 array=[]
 
-flush_button=[530,1214]
+flush_button=[530,1205]
 continuousOperationStep=0
 
 def fuzzy_match_commodity_name():
@@ -67,7 +59,7 @@ def isOpenTransaction(posResult,titleResult):
     for titleIndex,titleValue in enumerate(titleResult):
         if "物品交易所" in titleValue:
             return False 
-    pyautogui.hotkey("alt","e")
+    pyautogui.hotkey("alt","y")
     sp(1,3)
     TransactionScreenOcr.sceen(screen_x,screen_y,screen_x1,screen_y1,"./result.png")
     bbox,text,confidence=Ocr("result.png")
@@ -120,7 +112,7 @@ def exitBuyMouseMoveTo(posResult,titleResult):
             pyautogui.doubleClick()
             sp()
             pyautogui.press('backspace')
-            pyautogui.typewrite(str(random.randint(1,5)), interval=random.uniform(0.2,0.5))
+            pyautogui.typewrite(str(random.randint(10,15)), interval=random.uniform(0.2,0.5))
             
         if "近似值" in titleValue:
             x=posResult[titleIndex][0][0]+random.uniform(250,300)+screen_x

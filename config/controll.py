@@ -1,0 +1,32 @@
+ControlList={
+    "buyButtonOfTrasction":{
+        "name":"buyButtonOfTrasction",
+        "init":False,
+        "allowCache":True,
+        "position":(0,0)
+    },
+    "buyQuantitySuccessButton":{
+        "name":"buyButtonOfTrasction",
+        "init":False,
+        "allowCache":True,
+        "position":(0,0)
+    },
+    "successBuyButton":{
+        "name":"successBuyButton",
+        "init":False,
+        "allowCache":True,
+        "position":(0,0)
+    },
+    "buyQuantity":{
+        "name":"buyQuantity",
+        "init":False,
+        "allowCache":True,
+        "position":(0,0)
+    },
+    "average":{
+        "name":"average",
+        "init":False,
+        "allowCache":True,
+        "position":(0,0)
+    },
+}
